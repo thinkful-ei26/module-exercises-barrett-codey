@@ -5,9 +5,11 @@ const store = (function () {
   const items = [];
   const hideCheckedItems = false;
   searchTerm = '';
+
   const findById = (id) => {
-    return store.items.find(item => item === id);
+    return items.find(item => item.id === id);
   };
+
   const addItem = function(name) {
     try {
         Item.validateName(name);
@@ -17,13 +19,15 @@ const store = (function () {
         console.log('error.message');
     }
   }
+
   const findAndToggleChecked = function(id) {
       const item = this.findById(id);
       item.checked = !item.checked;
   }
+
   const findAndUpdateName = function(id, newName) {
       try {
-        validateName(newName);
+        Item.validateName(newName);
         const item = findById(id);
         item.name = newName;
       } catch {
@@ -32,7 +36,7 @@ const store = (function () {
       }
   }
   const findAndDelete = function(id) {
-    const itemIndex = this.items.findIndex(id)
+    const itemIndex = this.items.findIndex( item => item.id == id);
     this.items.splice(itemIndex, 1);
   }
 
