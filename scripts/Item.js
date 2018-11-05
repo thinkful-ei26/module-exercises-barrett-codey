@@ -1,21 +1,22 @@
+/* eslint-disable strict */
 const Item = (function () {
     
-   const validateName = function validateName(name) {
-        if(!name) throw new TypeError('Name does not exist.');
-    }
+  const validateName = function validateName(name) {
+    if(!name) throw new TypeError('Name does not exist.');
+  };
     
-    const create = function create(name) {
-        return {
-            id: cuid(),
-            name,
-            checked: false,
-        }
-    }
-
+  const create = function create(name) {
     return {
-        validateName,
-        create
-    }
+      id: cuid(),
+      name,
+      checked: false,
+    };
+  };
+
+  return {
+    validateName,
+    create
+  };
     
 }() );
 
